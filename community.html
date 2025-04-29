@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Community - Iron Bowl Capital</title>
+  <meta name="description" content="Join the Iron Bowl Capital community of Asian American creators">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    .font-serif { font-family: 'Noto Serif', serif; }
+    body { font-family: 'Inter', sans-serif; }
+    .primary { background-color: #1a4b8a; }
+    .primary-dark { background-color: #153a6d; }
+    .text-primary { color: #1a4b8a; }
+    .card-hover:hover { transform: translateY(-5px); transition: transform 0.2s ease; }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="bg-white shadow py-4">
+    <div class="container mx-auto flex justify-between items-center px-4">
+      <a href="index.html" class="flex items-center">
+        <img src="assets/logo.png" alt="Iron Bowl Capital" class="h-8 w-8 mr-2">
+        <span class="font-bold text-xl text-gray-900">Iron Bowl Capital</span>
+      </a>
+      <div class="space-x-6">
+        <a href="about.html" class="text-gray-600 hover:text-blue-700">About</a>
+        <a href="howitworks.html" class="text-gray-600 hover:text-blue-700">How It Works</a>
+        <a href="apply.html" class="text-gray-600 hover:text-blue-700">Apply</a>
+        <a href="invest.html" class="text-gray-600 hover:text-blue-700">Invest</a>
+        <a href="community.html" class="text-gray-600 hover:text-blue-700">Community</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-24 pb-16">
+    <div class="container mx-auto px-4">
+      <!-- Hero Section -->
+      <section class="text-center mb-16">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4 font-serif">Our Creative Community</h1>
+        <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+          Connect with fellow Asian American creators, share resources, and grow together
+        </p>
+      </section>
+
+      <!-- Features Grid -->
+      <section class="mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Feature 1 -->
+          <div class="bg-white p-8 rounded-xl shadow-sm card-hover">
+            <div class="text-primary mb-5">
+              <i data-lucide="users" class="w-12 h-12"></i>
+            </div>
+            <h3 class="font-bold text-xl mb-3">Networking Events</h3>
+            <p class="text-gray-600">
+              Monthly virtual meetups and annual in-person gatherings
+            </p>
+          </div>
+          
+          <!-- Feature 2 -->
+          <div class="bg-white p-8 rounded-xl shadow-sm card-hover">
+            <div class="text-primary mb-5">
+              <i data-lucide="monitor-play" class="w-12 h-12"></i>
+            </div>
+            <h3 class="font-bold text-xl mb-3">Workshops</h3>
+            <p class="text-gray-600">
+              Live sessions on business skills and creative techniques
+            </p>
+          </div>
+          
+          <!-- Feature 3 -->
+          <div class="bg-white p-8 rounded-xl shadow-sm card-hover">
+            <div class="text-primary mb-5">
+              <i data-lucide="briefcase" class="w-12 h-12"></i>
+            </div>
+            <h3 class="font-bold text-xl mb-3">Job Board</h3>
+            <p class="text-gray-600">
+              Exclusive opportunities from Asian-owned businesses
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Member Showcase -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-bold mb-8 font-serif">Featured Members</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Member 1 -->
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="h-56 bg-gray-200">
+              <img src="assets/member-lisa.jpg" 
+                   alt="Lisa Nguyen" 
+                   class="w-full h-full object-cover"
+                   loading="lazy">
+            </div>
+            <div class="p-6">
+              <h3 class="font-bold text-xl mb-1">Lisa Nguyen</h3>
+              <p class="text-primary mb-3">Textile Artist</p>
+              <p class="text-gray-700">
+                Specializes in modern interpretations of traditional Vietnamese patterns
+              </p>
+            </div>
+          </div>
+          
+          <!-- Member 2 -->
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="h-56 bg-gray-200">
+              <img src="assets/member-raj.jpg" 
+                   alt="Raj Patel" 
+                   class="w-full h-full object-cover"
+                   loading="lazy">
+            </div>
+            <div class="p-6">
+              <h3 class="font-bold text-xl mb-1">Raj Patel</h3>
+              <p class="text-primary mb-3">Indie Game Developer</p>
+              <p class="text-gray-700">
+                Creating narrative-driven games exploring South Asian diaspora experiences
+              </p>
+            </div>
+          </div>
+          
+          <!-- Member 3 -->
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="h-56 bg-gray-200">
+              <img src="assets/member-maya.jpg" 
+                   alt="Maya Wong" 
+                   class="w-full h-full object-cover"
+                   loading="lazy">
+            </div>
+            <div class="p-6">
+              <h3 class="font-bold text-xl mb-1">Maya Wong</h3>
+              <p class="text-primary mb-3">Ceramicist</p>
+              <p class="text-gray-700">
+                Blending Chinese porcelain techniques with modern sculptural forms
+              </p>
+            </div>
+          </div>
+          
+          <!-- Member 4 -->
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="h-56 bg-gray-200">
+              <img src="assets/member-kenji.jpg" 
+                   alt="Kenji Tanaka" 
+                   class="w-full h-full object-cover"
+                   loading="lazy">
+            </div>
+            <div class="p-6">
+              <h3 class="font-bold text-xl mb-1">Kenji Tanaka</h3>
+              <p class="text-primary mb-3">Documentary Filmmaker</p>
+              <p class="text-gray-700">
+                Chronicling Japanese American communities in the Midwest
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-bold mb-8 font-serif">Community Voices</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Testimonial 1 -->
+          <div class="bg-white p-8 rounded-xl shadow-sm">
+            <div class="flex items-center mb-4">
+              <img src="assets/testimonial-emily.jpg" 
+                   alt="Emily Chang" 
+                   class="w-12 h-12 rounded-full mr-4">
+              <div>
+                <h3 class="font-bold">Emily Chang</h3>
+                <p class="text-gray-600">Illustrator</p>
+              </div>
+            </div>
+            <p class="text-gray-700 italic">
+              "The community helped me find my first gallery representation - something I never thought possible!"
+            </p>
+          </div>
+          
+          <!-- Testimonial 2 -->
+          <div class="bg-white p-8 rounded-xl shadow-sm">
+            <div class="flex items-center mb-4">
+              <img src="assets/testimonial-alex.jpg" 
+                   alt="Alex Kim" 
+                   class="w-12 h-12 rounded-full mr-4">
+              <div>
+                <h3 class="font-bold">Alex Kim</h3>
+                <p class="text-gray-600">Furniture Designer</p>
+              </div>
+            </div>
+            <p class="text-gray-700 italic">
+              "Through the job board, I landed a commission with a major design firm that values cultural authenticity."
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="bg-gradient-to-r from-primary to-primary-dark text-white p-10 rounded-xl text-center">
+        <h2 class="text-2xl font-bold mb-4 font-serif">Join Our Growing Community</h2>
+        <p class="mb-6 max-w-2xl mx-auto">
+          Whether you're looking to connect, collaborate, or grow your creative business, we have a place for you
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="apply.html" 
+             class="bg-white text-primary px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition duration-200">
+            Apply for Membership
+          </a>
+          <a href="invest.html" 
+             class="border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-primary transition duration-200">
+            Support the Community
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto text-center">
+      &copy; 2025 Iron Bowl Capital. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>
