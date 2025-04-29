@@ -26,7 +26,8 @@
 </head>
 <body class="bg-gray-50">
   <!-- Navigation -->
-  <nav class="bg-white shadow py-4">
+  <header>
+    <nav class="bg-white shadow py-4">
     <div class="container mx-auto flex justify-between items-center px-4">
       <a href="index.html" class="flex items-center">
         <img src="assets/logo.png" alt="Iron Bowl Capital" class="h-8 w-8 mr-2">
@@ -41,12 +42,13 @@
       </div>
     </div>
   </nav>
+  </header>
 
   <main class="pt-24 pb-16">
     <div class="container mx-auto px-4">
       <!-- Hero Section -->
       <div class="text-center mb-12">
-        <h1 class="text-3xl md:text-4xl font-bold mb-4 font-serif">How It Works</h1>
+        <h1 class="text-3xl md:text-4xl font-bold text-primary mb-8">How It Works</h1>
         <p class="text-lg text-gray-700 max-w-2xl mx-auto">
           Our streamlined process makes it easy to apply for and receive funding tailored to the needs of Asian American creators.
         </p>
@@ -244,18 +246,21 @@
       </section>
 
       <!-- CTA Section -->
-      <section class="bg-gradient-to-r from-primary to-primary-dark text-white p-10 rounded-xl text-center">
-        <h2 class="text-2xl font-bold mb-4 font-serif">Start Your Journey</h2>
+      <section aria-labelledby="apply-cta" class="text-center py-12">
+      <h2 id="apply-cta" class="text-2xl font-bold text-gray-900 mb-4">Start Your Journey</h2>
         <p class="mb-6 max-w-2xl mx-auto">
           Apply today and join the movement supporting Asian American creativity and innovation
         </p>
         <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <a href="apply.html" 
-             class="bg-white text-primary px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition duration-200">
+          <a href="/apply.html" class="inline-block bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary-dark transition-all">
             Apply Now
           </a>
           <a href="invest.html" 
              class="border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-primary transition duration-200">
+            Investor Portal
+          </a>
+          <a href="invest.html" 
+              class="inline-block bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary-dark transition-all">
             Investor Portal
           </a>
         </div>
