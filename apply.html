@@ -3,24 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <title>Apply - Iron Bowl Capital</title>
-  <meta name="description" content="Apply for a microloan to fuel your creative journey">
+  <!-- Apply Page (apply.html) -->
+  <meta name="description" content="Quick application for microloans to fuel your creative journey with soft credit check, no hidden fees, and community support for Asian American creatives.">
+  <meta property="og:title" content="Apply for a Creative Project Loan | Iron Bowl Capital">
+  <meta property="og:image" content="https://www.ironbowlcapital.com/assets/og-apply.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Open Graph/Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Microloans for Asian American Innovators | Iron Bowl Capital">
+  <meta property="og:description" content="Funding solutions designed for Asian American creators and entrepreneurs.">
+  <meta property="og:image" content="https://www.ironbowlcapital.com/assets/og-home.jpg">
+  <meta property="og:url" content="https://www.ironbowlcapital.com/">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Microloans for Asian American Creatives">
+  <meta name="twitter:description" content="Get funding for your creative vision with community-backed support.">
+  <meta name="twitter:image" content="https://www.ironbowlcapital.com/assets/og-home.jpg">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2F2K17NW1X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2F2K17NW1X');
+  </script>
+  
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-      :root {
-    --primary: #1a4b8a;  /* Your exact blue from React app */
-    --primary-dark: #153a6d;
-    --accent: #e53e3e;   /* Add if present in React app */
-  }
-      .text-primary { color: #1a4b8a; }
-  .bg-primary { background-color: #1a4b8a; }
-  .border-primary { border-color: #1a4b8a; }
-  .hover\:bg-primary-dark:hover { background-color: #153a6d; }
+    :root {
+      --primary: #1a4b8a;  /* Your exact blue from React app */
+      --primary-dark: #153a6d;
+      --accent: #e53e3e;   /* Add if present in React app */
+    }
+    .text-primary { color: #1a4b8a; }
+    .bg-primary { background-color: #1a4b8a; }
+    .border-primary { border-color: #1a4b8a; }
+    .hover\:bg-primary-dark:hover { background-color: #153a6d; }
     body { font-family: 'Inter', sans-serif; }
     .gradient-bg { background: linear-gradient(120deg, #1a237e 0%, #3949ab 100%); }
   </style>
@@ -224,5 +252,15 @@
       &copy; 2025 Iron Bowl Capital. All rights reserved.
     </div>
   </footer>
+<script>
+  document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', () => {
+      gtag('event', 'form_submit', {
+        'form_name': form.id || 'loan_application',
+        'form_type': form.getAttribute('action')
+      });
+    });
+  });
+</script>
 </body>
 </html>
