@@ -5,33 +5,54 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Primary SEO -->
-  <title>Iron Bowl Capital - Microloans for Asian American Creatives</title>
-  <meta name="description" content="Affordable microloans for Asian Americans in non-traditional careers. Get funded for projects, equipment, and education. Build your creative business with our community-focused financing.">
-  <meta property="og:title" content="Microloans for Asian American Innovators | Iron Bowl Capital">
-  <meta property="og:image" content="https://www.ironbowlcapital.com/assets/og-home.jpg">
-
-  <!-- Open Graph/Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Microloans for Asian American Innovators | Iron Bowl Capital">
-  <meta property="og:description" content="Funding solutions designed for Asian American creators and entrepreneurs.">
-  <meta property="og:image" content="https://www.ironbowlcapital.com/assets/og-home.jpg">
-  <meta property="og:url" content="https://www.ironbowlcapital.com/">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Microloans for Asian American Creatives">
-  <meta name="twitter:description" content="Get funding for your creative vision with community-backed support.">
-  <meta name="twitter:image" content="https://www.ironbowlcapital.com/assets/og-home.jpg">
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2F2K17NW1X"></script>
-  <script>
+    <!-- Primary SEO -->
+    <title>Iron Bowl Capital - Microloans for Asian American Creatives</title>
+    <meta name="description" content="Affordable microloans for Asian Americans in non-traditional careers. Get funded for projects, equipment, and education. Build your creative business with our community-focused financing.">
+    <meta property="og:title" content="Microloans for Asian American Innovators | Iron Bowl Capital">
+    <meta property="og:image" content="https://www.ironbowlcapital.com/assets/og-home.jpg">
+    
+    <!-- Open Graph/Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Microloans for Asian American Innovators | Iron Bowl Capital">
+    <meta property="og:description" content="Funding solutions designed for Asian American creators and entrepreneurs.">
+    <meta property="og:image" content="https://www.ironbowlcapital.com/assets/og-home.jpg">
+    <meta property="og:url" content="https://www.ironbowlcapital.com/">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Microloans for Asian American Creatives">
+    <meta name="twitter:description" content="Get funding for your creative vision with community-backed support.">
+    <meta name="twitter:image" content="https://www.ironbowlcapital.com/assets/og-home.jpg">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2F2K17NW1X"></script>
+    <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-2F2K17NW1X');
-  </script>
+    </script>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.ironbowlcapital.com/" />
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FinancialService",
+        "name": "Iron Bowl Capital",
+        "image": "https://www.ironbowlcapital.com/assets/logo.png",
+        "description": "Microloans for Asian American creators and innovators",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "San Francisco",
+            "addressRegion": "CA",
+            "postalCode": "94107",
+            "addressCountry": "US"
+        }
+    }
+    </script>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -162,5 +183,34 @@
   <script>
     lucide.createIcons();
   </script>
+<!-- Cookie Banner -->
+<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white p-4 text-center z-50">
+  <p class="inline-block mr-4">We use cookies to analyze traffic and improve your experience.</p>
+  <button onclick="acceptCookies()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Accept</button>
+  <a href="/privacy-policy.html" class="text-blue-400 hover:text-blue-300 underline ml-4">Learn More</a>
+</div>
+
+<script>
+  // Hide banner if accepted
+  if(localStorage.getItem('cookies_accepted')) {
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+
+  // Consent handling
+  function acceptCookies() {
+    localStorage.setItem('cookies_accepted', true);
+    document.getElementById('cookie-banner').style.display = 'none';
+    gtag('consent', 'update', {
+      'analytics_storage': 'granted',
+      'ad_storage': 'granted'
+    });
+  }
+
+  // Initialize GA with denied consent by default
+  gtag('consent', 'default', {
+    'analytics_storage': 'denied',
+    'ad_storage': 'denied'
+  });
+</script>
 </body>
 </html>

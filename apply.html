@@ -183,15 +183,7 @@
           <div class="mb-8">
             <h2 class="text-xl font-bold mb-4">Loan Details</h2>
             <div class="space-y-4">
-              <div>
-                <label class="block text-sm font-medium mb-1">Loan Amount</label>
-                <select name="loan_amount" required class="w-full p-2 border rounded">
-                  <option value="">Select amount</option>
-                  <option value="5000">$5,000</option>
-                  <option value="7500">$7,500</option>
-                  <option value="10000">$10,000</option>
-                </select>
-              </div>
+              <!DOCTYPE html>
               <div>
                 <label class="block text-sm font-medium mb-1">Loan Purpose</label>
                 <select name="loan_purpose" required class="w-full p-2 border rounded">
@@ -260,6 +252,35 @@
         'form_type': form.getAttribute('action')
       });
     });
+  });
+</script>
+  <!-- Cookie Banner -->
+<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white p-4 text-center z-50">
+  <p class="inline-block mr-4">We use cookies to analyze traffic and improve your experience.</p>
+  <button onclick="acceptCookies()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Accept</button>
+  <a href="/privacy-policy.html" class="text-blue-400 hover:text-blue-300 underline ml-4">Learn More</a>
+</div>
+
+<script>
+  // Hide banner if accepted
+  if(localStorage.getItem('cookies_accepted')) {
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+
+  // Consent handling
+  function acceptCookies() {
+    localStorage.setItem('cookies_accepted', true);
+    document.getElementById('cookie-banner').style.display = 'none';
+    gtag('consent', 'update', {
+      'analytics_storage': 'granted',
+      'ad_storage': 'granted'
+    });
+  }
+
+  // Initialize GA with denied consent by default
+  gtag('consent', 'default', {
+    'analytics_storage': 'denied',
+    'ad_storage': 'denied'
   });
 </script>
 </body>
