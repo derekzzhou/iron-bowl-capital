@@ -11,32 +11,19 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-  :root {
-    --primary: #1F3A5F;
-    --primary-dark: #0F2A4A;
-    --accent: #FF6B35;
-    --accent-dark: #E65A2B;
+      :root {
+    --primary: #1a4b8a;  /* Your exact blue from React app */
+    --primary-dark: #153a6d;
+    --accent: #e53e3e;   /* Add if present in React app */
+
   }
-
-  /* Text Colors */
-  .text-primary { color: var(--primary); }
-  .text-accent { color: var(--accent); }
-
-  /* Backgrounds */
-  .primary { background-color: var(--primary); }
-  .primary-dark { background-color: var(--primary-dark); }
-  .accent { background-color: var(--accent); }
-  .accent-dark { background-color: var(--accent-dark); }
-
-  /* Gradients */
-  .gradient-primary {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  }
-
-  /* Hover States */
-  .hover\:primary-dark:hover { background-color: var(--primary-dark); }
-  .hover\:accent-dark:hover { background-color: var(--accent-dark); }
-</style>
+      .text-primary { color: #1a4b8a; }
+  .bg-primary { background-color: #1a4b8a; }
+  .border-primary { border-color: #1a4b8a; }
+  .hover\:bg-primary-dark:hover { background-color: #153a6d; }
+    body { font-family: 'Inter', sans-serif; }
+    .gradient-bg { background: linear-gradient(120deg, #1a237e 0%, #3949ab 100%); }
+  </style>
 </head>
 <body class="bg-gray-50">
   <!-- Navigation -->
