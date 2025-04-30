@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Apply - Iron Bowl Capital</title>
+  <!-- Apply Page (apply.html) -->
+  <meta name="description" content="Quick application for microloans to fuel your creative journey with soft credit check, no hidden fees, and community support for Asian American creatives.">
+  <meta property="og:title" content="Apply for a Creative Project Loan | Iron Bowl Capital">
+  <meta property="og:image" content="https://www.ironbowlcapital.com/assets/og-apply.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Open Graph/Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Microloans for Asian American Innovators | Iron Bowl Capital">
+  <meta property="og:description" content="Funding solutions designed for Asian American creators and entrepreneurs.">
+  <meta property="og:image" content="https://www.ironbowlcapital.com/assets/og-home.jpg">
+  <meta property="og:url" content="https://www.ironbowlcapital.com/">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Microloans for Asian American Creatives">
+  <meta name="twitter:description" content="Get funding for your creative vision with community-backed support.">
+  <meta name="twitter:image" content="https://www.ironbowlcapital.com/assets/og-home.jpg">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2F2K17NW1X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2F2K17NW1X');
+  </script>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --primary: #1a4b8a;  /* Your exact blue from React app */
+      --primary-dark: #153a6d;
+      --accent: #e53e3e;   /* Add if present in React app */
+    }
+    .text-primary { color: #1a4b8a; }
+    .bg-primary { background-color: #1a4b8a; }
+    .border-primary { border-color: #1a4b8a; }
+    .hover\:bg-primary-dark:hover { background-color: #153a6d; }
+    body { font-family: 'Inter', sans-serif; }
+    .gradient-bg { background: linear-gradient(120deg, #1a237e 0%, #3949ab 100%); }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="bg-white shadow py-4">
+    <div class="container mx-auto flex justify-between items-center px-4">
+      <a href="index.html" class="flex items-center">
+        <img src="assets/logo.png" alt="Iron Bowl Capital" class="h-8 w-8 mr-2">
+        <span class="font-bold text-xl text-gray-900">Iron Bowl Capital</span>
+      </a>
+      <div class="space-x-6">
+        <a href="about.html" class="text-gray-600 hover:text-blue-700">About</a>
+        <a href="howitworks.html" class="text-gray-600 hover:text-blue-700">How It Works</a>
+        <a href="apply.html" class="text-gray-600 hover:text-blue-700">Apply</a>
+        <a href="invest.html" class="text-gray-600 hover:text-blue-700">Invest</a>
+        <a href="community.html" class="text-gray-600 hover:text-blue-700">Community</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-24 pb-16">
+    <div class="container mx-auto px-4">
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4 font-serif">Apply for a Microloan</h1>
+        <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+          Take the first step toward growing your creative career with a loan designed for Asian American creators.
+        </p>
+      </div>
+<!-- Add this before the application form -->
+<section class="bg-gray-50 py-16">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+    <div class="max-w-2xl mx-auto space-y-4">
+      <!-- FAQ 1 -->
+      <div class="border-b pb-4">
+        <button onclick="toggleFAQ(1)" 
+                class="w-full text-left flex justify-between items-center">
+          <span class="font-medium">What credit score do I need?</span>
+          <i id="chevron1" data-lucide="chevron-down" class="ml-2"></i>
+        </button>
+        <div id="faq1" class="mt-2 text-gray-600 hidden">
+          We consider applicants with scores as low as 600, focusing on your creative potential and business plan.
+        </div>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div class="border-b pb-4">
+        <button onclick="toggleFAQ(2)" 
+                class="w-full text-left flex justify-between items-center">
+          <span class="font-medium">How long does approval take?</span>
+          <i id="chevron2" data-lucide="chevron-down" class="ml-2"></i>
+        </button>
+        <div id="faq2" class="mt-2 text-gray-600 hidden">
+          Most applications receive a decision within 2 business days after document submission.
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="border-b pb-4">
+        <button onclick="toggleFAQ(3)" 
+                class="w-full text-left flex justify-between items-center">
+          <span class="font-medium">Can I pay off early?</span>
+          <i id="chevron3" data-lucide="chevron-down" class="ml-2"></i>
+        </button>
+        <div id="faq3" class="mt-2 text-gray-600 hidden">
+          Yes! We encourage early repayment with no penalties or fees.
+        </div>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="border-b pb-4">
+        <button onclick="toggleFAQ(4)" 
+                class="w-full text-left flex justify-between items-center">
+          <span class="font-medium">What documentation do I need?</span>
+          <i id="chevron4" data-lucide="chevron-down" class="ml-2"></i>
+        </button>
+        <div id="faq4" class="mt-2 text-gray-600 hidden">
+          Basic ID, 3 months of bank statements, and examples of your creative work.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleFAQ(num) {
+      const faq = document.getElementById(`faq${num}`);
+      const chevron = document.getElementById(`chevron${num}`);
+      
+      faq.classList.toggle('hidden');
+      const isOpen = !faq.classList.contains('hidden');
+      
+      if (isOpen) {
+        chevron.setAttribute('data-lucide', 'chevron-up');
+      } else {
+        chevron.setAttribute('data-lucide', 'chevron-down');
+      }
+      lucide.createIcons();
+    }
+  </script>
+</section>
+      <!-- Application Form -->
+      <div class="max-w-2xl mx-auto p-4">
+        <form action="https://formspree.io/f/xnndjjlg" method="POST" class="bg-white p-8 rounded-lg shadow-sm">
+          <!-- Personal Information -->
+          <div class="mb-8">
+            <h2 class="text-xl font-bold mb-4">Personal Information</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium mb-1">First Name</label>
+                <input type="text" name="first_name" required class="w-full p-2 border rounded">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1">Last Name</label>
+                <input type="text" name="last_name" required class="w-full p-2 border rounded">
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-sm font-medium mb-1">Email</label>
+                <input type="email" name="email" required class="w-full p-2 border rounded">
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-sm font-medium mb-1">Phone</label>
+                <input type="tel" name="phone" required class="w-full p-2 border rounded">
+              </div>
+            </div>
+          </div>
+
+          <!-- Loan Details -->
+          <div class="mb-8">
+            <h2 class="text-xl font-bold mb-4">Loan Details</h2>
+            <div class="space-y-4">
+              <!DOCTYPE html>
+              <div>
+                <label class="block text-sm font-medium mb-1">Loan Purpose</label>
+                <select name="loan_purpose" required class="w-full p-2 border rounded">
+                  <option value="">Select purpose</option>
+                  <option value="equipment">Equipment Purchase</option>
+                  <option value="education">Education/Training</option>
+                  <option value="vehicle">Vehicle Down Payment</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1">Describe Your Work</label>
+                <textarea name="work_description" rows="4" required class="w-full p-2 border rounded"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Financial Information
+          <div class="mb-8">
+            <h2 class="text-xl font-bold mb-4">Financial Information</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium mb-1">Annual Income</label>
+                <input type="number" name="income" required class="w-full p-2 border rounded">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1">Credit Score</label>
+                <input type="number" name="credit_score" class="w-full p-2 border rounded">
+              </div>
+            </div>
+          </div> -->
+
+          <!-- Consent -->
+          <div class="mb-8">
+            <div class="flex items-center">
+              <input type="checkbox" name="consent" required class="mr-2">
+              <label class="text-sm">
+                <!--
+                I authorize Iron Bowl Capital to perform a credit check and verify my information
+                -->
+                I authorize Iron Bowl Capital to verify my information
+              </label>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="w-full bg-indigo-700 text-white py-3 rounded font-bold hover:bg-indigo-800 transition">
+            Submit Application
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto text-center">
+      &copy; 2025 Iron Bowl Capital. All rights reserved.
+    </div>
+  </footer>
+<script>
+  document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', () => {
+      gtag('event', 'form_submit', {
+        'form_name': form.id || 'loan_application',
+        'form_type': form.getAttribute('action')
+      });
+    });
+  });
+</script>
+  <!-- Cookie Banner -->
+<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white p-4 text-center z-50">
+  <p class="inline-block mr-4">We use cookies to analyze traffic and improve your experience.</p>
+  <button onclick="acceptCookies()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Accept</button>
+  <a href="/privacy-policy.html" class="text-blue-400 hover:text-blue-300 underline ml-4">Learn More</a>
+</div>
+
+<script>
+  // Hide banner if accepted
+  if(localStorage.getItem('cookies_accepted')) {
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+
+  // Consent handling
+  function acceptCookies() {
+    localStorage.setItem('cookies_accepted', true);
+    document.getElementById('cookie-banner').style.display = 'none';
+    gtag('consent', 'update', {
+      'analytics_storage': 'granted',
+      'ad_storage': 'granted'
+    });
+  }
+
+  // Initialize GA with denied consent by default
+  gtag('consent', 'default', {
+    'analytics_storage': 'denied',
+    'ad_storage': 'denied'
+  });
+</script>
+</body>
+</html>
