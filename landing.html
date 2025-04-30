@@ -130,6 +130,47 @@
         height: 200px;
       }
     }
+    .loan-calc-container {
+      background: #fff;
+      max-width: 420px;
+      margin: 40px auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      padding: 32px 24px;
+    }
+    .loan-calc-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .loan-calc-form label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    .loan-calc-form input,
+    .loan-calc-form select {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      background: #fafafa;
+    }
+    .loan-calc-results {
+      background: #f3f3f3;
+      padding: 18px;
+      border-radius: 6px;
+      margin-top: 18px;
+      font-size: 1.05rem;
+    }
+    .loan-calc-results strong {
+      display: inline-block;
+      width: 160px;
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
@@ -142,8 +183,7 @@
           Empowering Asian American creators with tailored microloans to fuel their artistic and entrepreneurial visions.
         </p>
       </div>
-      <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=600&q=80"
-           alt="Asian American Creator" class="hero-img">
+      <img src="assets/chef.jpg" alt="Asian American Chef" class="hero-img">
     </section>
     <section id="content">
         <h1>Fuel Your Creative Vision</h1>
@@ -151,6 +191,32 @@
         <div id="loan-calculator">
             <input type="range" min="500" max="5000" step="100" id="loanAmount">
             <p>Estimated repayment: <span id="repayment">$550</span></p>
+        </div>
+        <div class="loan-calc-container">
+          <div class="loan-calc-title">Loan Calculator</div>
+          <form class="loan-calc-form" id="loanForm" autocomplete="off">
+            <label>
+              Loan Amount ($)
+              <input type="number" id="amount" min="100" max="10000" step="100" value="1000" required>
+            </label>
+            <label>
+              Term (months)
+              <select id="term">
+                <option value="6">6 months</option>
+                <option value="12" selected>12 months</option>
+                <option value="24">24 months</option>
+              </select>
+            </label>
+            <label>
+              Interest Rate (% per year)
+              <input type="number" id="rate" min="0" max="100" step="0.1" value="5.0" required>
+            </label>
+          </form>
+          <div class="loan-calc-results" id="results">
+            <div><strong>Monthly Payment:</strong> $0.00</div>
+            <div><strong>Total Payment:</strong> $0.00</div>
+            <div><strong>Total Interest:</strong> $0.00</div>
+          </div>
         </div>
         <form id="waitlist">
             <input type="email" placeholder="Your professional email" required>
@@ -161,5 +227,59 @@
         <img src="ssl-badge.png" alt="256-bit SSL Encryption">
         <p>"Finally, a lender who understands creative cash flow cycles" - Mei L., Illustrator</p>
     </section>
+  
+  <script>
+    // Calculation function
+    function calculateLoan(amount, months, rate) {
+      const monthlyRate = rate / 100 / 12;
+      if (monthlyRate === 0) {
+        const monthly = amount / months;
+        return {
+          monthlyPayment: monthly,
+          totalPayment: amount,
+          totalInterest: 0
+        };
+      }
+      const monthlyPayment = amount * monthlyRate / (1 - Math.pow(1 + monthlyRate, -months));
+      const totalPayment = monthlyPayment * months;
+      const totalInterest = totalPayment - amount;
+      return {
+        monthlyPayment,
+        totalPayment,
+        totalInterest
+      };
+    }
+
+    function formatMoney(num) {
+      return num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    }
+
+    // DOM elements
+    const amountInput = document.getElementById('amount');
+    const termInput = document.getElementById('term');
+    const rateInput = document.getElementById('rate');
+    const resultsDiv = document.getElementById('results');
+
+    function updateResults() {
+      const amount = parseFloat(amountInput.value) || 0;
+      const months = parseInt(termInput.value, 10) || 1;
+      const rate = parseFloat(rateInput.value) || 0;
+      const { monthlyPayment, totalPayment, totalInterest } = calculateLoan(amount, months, rate);
+
+      resultsDiv.innerHTML = `
+        <div><strong>Monthly Payment:</strong> ${formatMoney(monthlyPayment)}</div>
+        <div><strong>Total Payment:</strong> ${formatMoney(totalPayment)}</div>
+        <div><strong>Total Interest:</strong> ${formatMoney(totalInterest)}</div>
+      `;
+    }
+
+    // Event listeners
+    amountInput.addEventListener('input', updateResults);
+    termInput.addEventListener('change', updateResults);
+    rateInput.addEventListener('input', updateResults);
+
+    // Initial calculation
+    updateResults();
+  </script>
 </body>
 </html>
