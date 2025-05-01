@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Microloans for Asian American Creators</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0d223f;
+      --background: #f9f7f4;
+      --white: #fff;
+      --input-border: #ccc;
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'Inter', Arial, sans-serif;
+    }
+    body {
+      margin: 0;
+      background: var(--background);
+      font-family: var(--font-sans);
+      color: #222;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 16px;
+    }
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 56px;
+    }
+    .hero-text {
+      flex: 1 1 320px;
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: 2.6rem;
+      font-weight: 700;
+      margin: 0 0 18px 0;
+    }
+    .hero-desc {
+      font-size: 1.1rem;
+      margin: 0;
+      color: #444;
+      max-width: 440px;
+    }
+    .hero-img {
+      flex: 1 1 280px;
+      min-width: 250px;
+      max-width: 350px;
+      border-radius: 6px;
+      object-fit: cover;
+      width: 100%;
+      height: 260px;
+    }
+    .form-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: flex-start;
+      margin-bottom: 56px;
+    }
+    .form-block {
+      flex: 1 1 320px;
+      min-width: 300px;
+    }
+    .form-title {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    form label {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    form input,
+    form select,
+    form textarea {
+      width: 100%;
+      padding: 10px 12px;
+      margin-top: 6px;
+      margin-bottom: 18px;
+      border: 1px solid var(--input-border);
+      border-radius: 4px;
+      font-size: 1rem;
+      font-family: var(--font-sans);
+      background: var(--white);
+      box-sizing: border-box;
+    }
+    form textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+    .form-button {
+      width: 100%;
+      padding: 13px 0;
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: 4px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .form-button:hover {
+      background: #16325c;
+    }
+    .form-img {
+      flex: 1 1 280px;
+      min-width: 250px;
+      max-width: 350px;
+      border-radius: 6px;
+      object-fit: cover;
+      width: 100%;
+      height: 260px;
+    }
+    @media (max-width: 900px) {
+      .hero, .form-section {
+        flex-direction: column;
+        gap: 24px;
+      }
+      .hero-img, .form-img {
+        height: 200px;
+      }
+    }
+    .loan-calc-container {
+      background: #fff;
+      max-width: 420px;
+      margin: 40px auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      padding: 32px 24px;
+    }
+    .loan-calc-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .loan-calc-form label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    .loan-calc-form input,
+    .loan-calc-form select {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      background: #fafafa;
+    }
+    .loan-calc-results {
+      background: #f3f3f3;
+      padding: 18px;
+      border-radius: 6px;
+      margin-top: 18px;
+      font-size: 1.05rem;
+    }
+    .loan-calc-results strong {
+      display: inline-block;
+      width: 160px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <a href="#waitlist-cta" class="flex items-center">
+        <img src="assets/logo_name.png" alt="Iron Bowl Capital" class="h-8 w-8 mr-2">
+      </a>
+      <div class="hero-text">
+        <h1 class="hero-title">Microloans for Asian American Creators</h1>
+        <p class="hero-desc">
+          Empowering Asian American creators with tailored microloans to fuel their artistic and entrepreneurial visions.
+        </p>
+      </div>
+      <img src="assets/chef.jpg" alt="Asian American Chef" class="hero-img">
+    </section>
+    <section id="content">
+        <h1>Fuel Your Creative Vision</h1>
+        <p>Get $500-$5k microloans with community rates</p>
+        <div class="loan-calc-container">
+          <div class="loan-calc-title">Loan Calculator</div>
+          <form class="loan-calc-form" id="loanForm" autocomplete="off">
+            <label>
+              Loan Amount ($)
+              <input type="number" id="amount" min="100" max="10000" step="100" value="1000" required>
+            </label>
+            <label>
+              Term (months)
+              <select id="term">
+                <option value="6">6 months</option>
+                <option value="12" selected>12 months</option>
+                <option value="24">24 months</option>
+              </select>
+            </label>
+            <label>
+              Interest Rate (% per year)
+              <input type="number" id="rate" min="0" max="100" step="0.1" value="5.0" required>
+            </label>
+          </form>
+          <div class="loan-calc-results" id="results">
+            <div><strong>Monthly Payment:</strong> $0.00</div>
+            <div><strong>Total Payment:</strong> $0.00</div>
+            <div><strong>Total Interest:</strong> $0.00</div>
+          </div>
+        </div>
+        <!-- Waitlist CTA-->
+        <div id="waitlist-cta" class="bg-blue-50 p-6 rounded-lg text-center">
+          <h3 class="text-xl font-bold mb-4">Limited Spots Available</h3>
+          <p class="mb-4">Join our priority list for early access</p>
+          <form action="https://formspree.io/f/xjkwgeon" method="POST" class="bg-white p-8 rounded-lg shadow-sm">
+            <input type="email" name="email" required 
+                   class="w-full px-4 py-2 mb-4 rounded-lg border border-blue-300" 
+                   placeholder="Enter your email">
+          
+            <!-- Loan Details -->
+            <div class="mb-8">
+              <h2 class="text-xl font-bold mb-4">Loan Details</h2>
+          
+              <div class="space-y-4">
+                <!-- Loan Purpose -->
+                <div>
+                  <label class="block text-sm font-medium mb-1">Loan Purpose</label>
+                  <select name="loan_purpose" id="loanPurpose" required class="w-full p-2 border rounded" onchange="handlePurposeChange()">
+                    <option value="">Select purpose</option>
+                    <option value="equipment">Equipment & Tools</option>
+                    <option value="supplies">Supplies & Materials</option>
+                    <option value="marketing">Marketing & Promotion</option>
+                    <option value="space">Space & Facilities</option>
+                    <option value="production">Project Production</option>
+                    <option value="development">Professional Development</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+          
+                <!-- Other (only if selected) -->
+                <div id="otherPurposeInput" class="hidden">
+                  <label class="block text-sm font-medium mb-1">Please describe other purpose</label>
+                  <input type="text" name="loan_purpose_other" class="w-full p-2 border rounded" />
+                </div>
+          
+                <!-- Subcategories -->
+                <div id="subCategorySection" class="hidden">
+                  <label class="block text-sm font-medium mb-1">More specifically, it's for:</label>
+                  <select name="loan_subcategory" class="w-full p-2 border rounded" id="loanSubcategory">
+                    <!-- Options added via JS -->
+                  </select>
+                </div>
+                
+                <!-- Work Description -->
+                <div>
+                  <label class="block text-sm font-medium mb-1">Describe Your Work</label>
+                  <textarea name="work_description" rows="4" required class="w-full p-2 border rounded"></textarea>
+                </div>
+              </div>
+            </div>
+          
+            <button type="submit" class="bg-blue-800 text-white px-6 py-2 rounded-lg hover:bg-blue-900">
+              Join Priority Waitlist
+            </button>
+          </form>
+        </div>
+    </section>
+    <section id="trust">
+        <img src="ssl-badge.png" alt="256-bit SSL Encryption">
+        <p>"Finally, a lender who understands creative cash flow cycles" - Mei L., Illustrator</p>
+    </section>
+  
+  <script>
+    // Calculation function
+    function calculateLoan(amount, months, rate) {
+      const monthlyRate = rate / 100 / 12;
+      if (monthlyRate === 0) {
+        const monthly = amount / months;
+        return {
+          monthlyPayment: monthly,
+          totalPayment: amount,
+          totalInterest: 0
+        };
+      }
+      const monthlyPayment = amount * monthlyRate / (1 - Math.pow(1 + monthlyRate, -months));
+      const totalPayment = monthlyPayment * months;
+      const totalInterest = totalPayment - amount;
+      return {
+        monthlyPayment,
+        totalPayment,
+        totalInterest
+      };
+    }
+
+    function formatMoney(num) {
+      return num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    }
+
+    // DOM elements
+    const amountInput = document.getElementById('amount');
+    const termInput = document.getElementById('term');
+    const rateInput = document.getElementById('rate');
+    const resultsDiv = document.getElementById('results');
+
+    function updateResults() {
+      const amount = parseFloat(amountInput.value) || 0;
+      const months = parseInt(termInput.value, 10) || 1;
+      const rate = parseFloat(rateInput.value) || 0;
+      const { monthlyPayment, totalPayment, totalInterest } = calculateLoan(amount, months, rate);
+
+      resultsDiv.innerHTML = `
+        <div><strong>Monthly Payment:</strong> ${formatMoney(monthlyPayment)}</div>
+        <div><strong>Total Payment:</strong> ${formatMoney(totalPayment)}</div>
+        <div><strong>Total Interest:</strong> ${formatMoney(totalInterest)}</div>
+      `;
+    }
+
+    // Event listeners
+    amountInput.addEventListener('input', updateResults);
+    termInput.addEventListener('change', updateResults);
+    rateInput.addEventListener('input', updateResults);
+
+    // Initial calculation
+    updateResults();
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const purposeSelect = document.getElementById('loanPurpose');
+    const otherInput = document.getElementById('otherPurposeInput');
+    const subCatSection = document.getElementById('subCategorySection');
+    const subCatSelect = document.getElementById('loanSubcategory');
+          
+    const subCategoryData = {
+      equipment: ["Purchase of Business Equipment", "Office or Studio Equipment", "Tools & Machinery", "Technology & Software", "Other"],
+      supplies: ["Raw Materials & Consumables", "Packaging & Shipping Materials", "Inventory & Product Stock", "Safety & Protective Supplies", "Other"],
+      marketing: ["Advertising & Digital Marketing", "Branding & Design Services", "Event Promotion & Participation", "Printed Marketing Materials", "Other"],
+      space: ["Rent or Lease Payments", "Renovations & Improvements", "Utilities & Facility Maintenance", "Temporary or Pop-Up Spaces", "Storage & Warehousing", "Other"],
+      production: ["Production & Manufacturing", "Event or Exhibition Expenses", "Contracted Services & Labor", "Distribution & Delivery", "Other"],
+      development: ["Training & Workshops", "Certifications & Licensing", "Conferences & Networking", "Portfolio & Presentation Development", "Other"]
+    };
+      
+    function updateFields() {
+      const selected = purposeSelect.value;
+
+      // Show "Other" input if "other" selected
+      if (selected === "other") {
+        otherInput.classList.remove("hidden");
+        subCatSection.classList.add("hidden");
+        subCatSelect.innerHTML = '';
+      } else {
+        otherInput.classList.add("hidden");
+
+        // Show subcategory only if valid main category
+        if (subCategoryData[selected]) {
+          subCatSection.classList.remove("hidden");
+          subCatSelect.innerHTML = subCategoryData[selected]
+            .map(sub => `<option value="${sub}">${sub}</option>`)
+            .join('');
+        } else {
+          subCatSection.classList.add("hidden");
+          subCatSelect.innerHTML = '';
+        }
+      }
+    }
+
+    purposeSelect.addEventListener('change', updateFields);
+    updateFields(); // run once on load
+  });
+</script>
+</body>
+</html>
