@@ -83,6 +83,32 @@
           Take the first step toward growing your creative career with a loan designed for Asian American creators.
         </p>
       </div>
+      <div class="loan-calc-container">
+        <div class="loan-calc-title">Loan Calculator</div>
+        <form class="loan-calc-form" id="loanForm" autocomplete="off">
+          <label>
+            Loan Amount ($)
+            <input type="number" id="amount" min="100" max="10000" step="100" value="1000" required>
+          </label>
+          <label>
+            Term (months)
+            <select id="term">
+              <option value="6">6 months</option>
+              <option value="12" selected>12 months</option>
+              <option value="24">24 months</option>
+            </select>
+          </label>
+          <label>
+            Interest Rate (% per year)
+            <input type="number" id="rate" min="0" max="100" step="0.1" value="5.0" required>
+          </label>
+        </form>
+        <div class="loan-calc-results" id="results">
+          <div><strong>Monthly Payment:</strong> $0.00</div>
+          <div><strong>Total Payment:</strong> $0.00</div>
+          <div><strong>Total Interest:</strong> $0.00</div>
+        </div>
+      </div>
       <div id="waitlist-cta" class="bg-blue-50 p-6 rounded-lg text-center">
         <h3 class="text-xl font-bold mb-4">Limited Spots Available</h3>
         <p class="mb-4">Join our priority list for early access</p>
@@ -148,7 +174,59 @@
   <button onclick="acceptCookies()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Accept</button>
   <a href="/privacy-policy.html" class="text-blue-400 hover:text-blue-300 underline ml-4">Learn More</a>
 </div>
+<script>
+    // Calculation function
+    function calculateLoan(amount, months, rate) {
+      const monthlyRate = rate / 100 / 12;
+      if (monthlyRate === 0) {
+        const monthly = amount / months;
+        return {
+          monthlyPayment: monthly,
+          totalPayment: amount,
+          totalInterest: 0
+        };
+      }
+      const monthlyPayment = amount * monthlyRate / (1 - Math.pow(1 + monthlyRate, -months));
+      const totalPayment = monthlyPayment * months;
+      const totalInterest = totalPayment - amount;
+      return {
+        monthlyPayment,
+        totalPayment,
+        totalInterest
+      };
+    }
 
+    function formatMoney(num) {
+      return num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    }
+
+    // DOM elements
+    const amountInput = document.getElementById('amount');
+    const termInput = document.getElementById('term');
+    const rateInput = document.getElementById('rate');
+    const resultsDiv = document.getElementById('results');
+
+    function updateResults() {
+      const amount = parseFloat(amountInput.value) || 0;
+      const months = parseInt(termInput.value, 10) || 1;
+      const rate = parseFloat(rateInput.value) || 0;
+      const { monthlyPayment, totalPayment, totalInterest } = calculateLoan(amount, months, rate);
+
+      resultsDiv.innerHTML = `
+        <div><strong>Monthly Payment:</strong> ${formatMoney(monthlyPayment)}</div>
+        <div><strong>Total Payment:</strong> ${formatMoney(totalPayment)}</div>
+        <div><strong>Total Interest:</strong> ${formatMoney(totalInterest)}</div>
+      `;
+    }
+
+    // Event listeners
+    amountInput.addEventListener('input', updateResults);
+    termInput.addEventListener('change', updateResults);
+    rateInput.addEventListener('input', updateResults);
+
+    // Initial calculation
+    updateResults();
+  </script>
 <script>
   // Hide banner if accepted
   if(localStorage.getItem('cookies_accepted')) {
