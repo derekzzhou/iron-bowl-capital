@@ -24,9 +24,20 @@
         <img src="assets/logo_icon.png" alt="Iron Bowl Logo" class="h-8 w-8">
         <span class="font-bold text-xl text-gray-900">Iron Bowl Capital</span>
       </a>
+      
+      <div class="space-x-6">
+        <a href="about.html" class="text-gray-600 hover:text-blue-700">About</a>
+        <a href="howitworks.html" class="text-gray-600 hover:text-blue-700">How It Works</a>
+        <a href="apply.html" class="text-gray-600 hover:text-blue-700">Apply</a>
+        <a href="landing.html" class="text-gray-600 hover:text-blue-700">Early Access</a>
+        <!--
+        <a href="invest.html" class="text-gray-600 hover:text-blue-700">Invest</a>
+        <a href="community.html" class="text-gray-600 hover:text-blue-700">Community</a>
+          -->
+      </div>
     </div>
   </header>
-
+  
   <section class="bg-white py-16 px-4">
     <div class="max-w-4xl mx-auto text-center">
       <h1 class="text-4xl md:text-5xl font-semibold mb-6 leading-tight">Microloans for Asian American Creators</h1>
@@ -61,11 +72,10 @@
                  class="w-full mt-2 px-3 py-2 border rounded hidden">
         </div>
 
-        <!-- Subcategories -->
-        <div id="subCategorySection" class="hidden">
-          <label class="block text-sm font-medium mb-1">More specifically, it's for:</label>
-          <select name="loan_subcategory" class="w-full p-2 border rounded" id="loanSubcategory">
-            <!-- Options added via JS -->
+        <div id="subCategorySection" style="display: none;" class="mb-4">
+          <label class="block text-sm font-medium mb-1">More specifically:</label>
+          <select name="loan_subcategory" id="loanSubcategory" class="w-full p-2 border rounded">
+            <!-- dynamically populated -->
           </select>
         </div>
 
@@ -96,13 +106,13 @@
       otherInput.classList.toggle('hidden', purposeSelect.value !== 'other');
     });
   </script>
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const purposeSelect = document.getElementById('loanPurpose');
-    const subCatSection = document.getElementById('subCategorySection');
-    const subCatSelect = document.getElementById('loanSubcategory');
-          
-    const subCategoryData = {
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const loanPurposeSelect = document.querySelector('select[name="loan_purpose"]');
+    const subCategorySection = document.getElementById('subCategorySection');
+    const loanSubcategorySelect = document.getElementById('loanSubcategory');
+  
+    const subcategories = {
       equipment: ["Purchase of Business Equipment", "Office or Studio Equipment", "Tools & Machinery", "Technology & Software", "Other"],
       supplies: ["Raw Materials & Consumables", "Packaging & Shipping Materials", "Inventory & Product Stock", "Safety & Protective Supplies", "Other"],
       marketing: ["Advertising & Digital Marketing", "Branding & Design Services", "Event Promotion & Participation", "Printed Marketing Materials", "Other"],
@@ -110,25 +120,25 @@
       production: ["Production & Manufacturing", "Event or Exhibition Expenses", "Contracted Services & Labor", "Distribution & Delivery", "Other"],
       development: ["Training & Workshops", "Certifications & Licensing", "Conferences & Networking", "Portfolio & Presentation Development", "Other"]
     };
-      
-    function updateFields() {
-      const selected = purposeSelect.value;
-        // Show subcategory only if valid main category
-        if (subCategoryData[selected]) {
-          subCatSection.classList.remove("hidden");
-          subCatSelect.innerHTML = subCategoryData[selected]
-            .map(sub => `<option value="${sub}">${sub}</option>`)
-            .join('');
-        } else {
-          subCatSection.classList.add("hidden");
-          subCatSelect.innerHTML = '';
-        }
+  
+    loanPurposeSelect.addEventListener('change', function () {
+      const selected = this.value;
+  
+      if (subcategories[selected]) {
+        subCategorySection.style.display = 'block';
+        loanSubcategorySelect.innerHTML = '<option value="">Select one</option>';
+        subcategories[selected].forEach(sub => {
+          const option = document.createElement('option');
+          option.value = sub;
+          option.textContent = sub;
+          loanSubcategorySelect.appendChild(option);
+        });
+      } else {
+        subCategorySection.style.display = 'none';
+        loanSubcategorySelect.innerHTML = '';
       }
-    }
-
-    purposeSelect.addEventListener('change', updateFields);
-    updateFields(); // run once on load
+    });
   });
-</script>
+  </script>
 </body>
 </html>
