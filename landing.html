@@ -177,6 +177,9 @@
   <div class="container">
     <!-- Hero Section -->
     <section class="hero">
+      <a href="index.html" class="flex items-center">
+        <img src="assets/logo_name.png" alt="Iron Bowl Capital" class="h-8 w-8 mr-2">
+      </a>
       <div class="hero-text">
         <h1 class="hero-title">Microloans for Asian American Creators</h1>
         <p class="hero-desc">
@@ -188,10 +191,6 @@
     <section id="content">
         <h1>Fuel Your Creative Vision</h1>
         <p>Get $500-$5k microloans with community rates</p>
-        <div id="loan-calculator">
-            <input type="range" min="500" max="5000" step="100" id="loanAmount">
-            <p>Estimated repayment: <span id="repayment">$550</span></p>
-        </div>
         <div class="loan-calc-container">
           <div class="loan-calc-title">Loan Calculator</div>
           <form class="loan-calc-form" id="loanForm" autocomplete="off">
@@ -218,10 +217,62 @@
             <div><strong>Total Interest:</strong> $0.00</div>
           </div>
         </div>
-        <form id="waitlist">
-            <input type="email" placeholder="Your professional email" required>
-            <button type="submit">Join Priority List</button>
-        </form>
+        <!-- Waitlist CTA-->
+        <div id="waitlist-cta" class="bg-blue-50 p-6 rounded-lg text-center">
+          <h3 class="text-xl font-bold mb-4">Limited Spots Available</h3>
+          <p class="mb-4">Join our priority list for early access</p>
+          <form action="https://formspree.io/f/xjkwgeon" method="POST" class="bg-white p-8 rounded-lg shadow-sm">
+            <input type="email" name="email" required 
+                   class="w-full px-4 py-2 mb-4 rounded-lg border border-blue-300" 
+                   placeholder="Enter your email">
+          
+            <!-- Loan Details -->
+            <div class="mb-8">
+              <h2 class="text-xl font-bold mb-4">Loan Details</h2>
+          
+              <div class="space-y-4">
+                <!-- Loan Purpose -->
+                <div>
+                  <label class="block text-sm font-medium mb-1">Loan Purpose</label>
+                  <select name="loan_purpose" id="loanPurpose" required class="w-full p-2 border rounded" onchange="handlePurposeChange()">
+                    <option value="">Select purpose</option>
+                    <option value="equipment">Equipment & Tools</option>
+                    <option value="supplies">Supplies & Materials</option>
+                    <option value="marketing">Marketing & Promotion</option>
+                    <option value="space">Space & Facilities</option>
+                    <option value="production">Project Production</option>
+                    <option value="development">Professional Development</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+          
+                <!-- If 'Other', show custom input -->
+                <div id="otherPurposeInput" class="hidden">
+                  <label class="block text-sm font-medium mb-1">Please describe other purpose</label>
+                  <input type="text" name="loan_purpose_other" class="w-full p-2 border rounded" />
+                </div>
+          
+                <!-- Subcategories (shown only when main category selected) -->
+                <div id="subCategorySection" class="hidden">
+                  <label class="block text-sm font-medium mb-1">More specifically, it's for:</label>
+                  <select name="loan_subcategory" class="w-full p-2 border rounded" id="loanSubcategory">
+                    <!-- Options injected by JavaScript -->
+                  </select>
+                </div>
+          
+                <!-- Work Description -->
+                <div>
+                  <label class="block text-sm font-medium mb-1">Describe Your Work</label>
+                  <textarea name="work_description" rows="4" required class="w-full p-2 border rounded"></textarea>
+                </div>
+              </div>
+            </div>
+          
+            <button type="submit" class="bg-blue-800 text-white px-6 py-2 rounded-lg hover:bg-blue-900">
+              Join Priority Waitlist
+            </button>
+          </form>
+        </div>
     </section>
     <section id="trust">
         <img src="ssl-badge.png" alt="256-bit SSL Encryption">
@@ -281,5 +332,38 @@
     // Initial calculation
     updateResults();
   </script>
+  <script>
+  const subCategoryData = {
+    equipment: ["Purchase of Business Equipment", "Office or Studio Equipment", "Tools & Machinery", "Technology & Software", "Other"],
+    supplies: ["Raw Materials & Consumables", "Packaging & Shipping Materials", "Inventory & Product Stock", "Safety & Protective Supplies", "Other"],
+    marketing: ["Advertising & Digital Marketing", "Branding & Design Services", "Event Promotion & Participation", "Printed Marketing Materials", "Other"],
+    space: ["Rent or Lease Payments", "Renovations & Improvements", "Utilities & Facility Maintenance", "Temporary or Pop-Up Spaces", "Storage & Warehousing", "Other"],
+    production: ["Production & Manufacturing", "Event or Exhibition Expenses", "Contracted Services & Labor", "Distribution & Delivery", "Other"],
+    development: ["Training & Workshops", "Certifications & Licensing", "Conferences & Networking", "Portfolio & Presentation Development", "Other"]
+  };
+
+  function handlePurposeChange() {
+    const purposeSelect = document.getElementById('loanPurpose');
+    const selectedValue = purposeSelect.value;
+
+    const otherInput = document.getElementById('otherPurposeInput');
+    const subCatSection = document.getElementById('subCategorySection');
+    const subCatSelect = document.getElementById('loanSubcategory');
+
+    // Toggle 'Other' input
+    otherInput.classList.toggle('hidden', selectedValue !== 'other');
+
+    // Toggle and populate subcategories
+    if (subCategoryData[selectedValue]) {
+      subCatSection.classList.remove('hidden');
+      subCatSelect.innerHTML = subCategoryData[selectedValue]
+        .map(sub => `<option value="${sub}">${sub}</option>`)
+        .join('');
+    } else {
+      subCatSection.classList.add('hidden');
+      subCatSelect.innerHTML = '';
+    }
+  }
+</script>
 </body>
 </html>
