@@ -21,7 +21,7 @@
   <header class="bg-white shadow-sm px-4 py-4">
     <div class="max-w-6xl mx-auto flex items-center justify-between">
       <a href="#form" class="flex items-center space-x-2">
-        <img src="assets/logo_bowl_only.png" alt="Iron Bowl Logo" class="h-8 w-8">
+        <img src="assets/logo_icon.png" alt="Iron Bowl Logo" class="h-8 w-8">
         <span class="font-bold text-xl text-gray-900">Iron Bowl Capital</span>
       </a>
     </div>
@@ -61,6 +61,14 @@
                  class="w-full mt-2 px-3 py-2 border rounded hidden">
         </div>
 
+        <!-- Subcategories -->
+        <div id="subCategorySection" class="hidden">
+          <label class="block text-sm font-medium mb-1">More specifically, it's for:</label>
+          <select name="loan_subcategory" class="w-full p-2 border rounded" id="loanSubcategory">
+            <!-- Options added via JS -->
+          </select>
+        </div>
+
         <div>
           <label class="block text-sm font-medium mb-1">Describe Your Work</label>
           <textarea name="work_description" rows="4" required 
@@ -88,6 +96,39 @@
       otherInput.classList.toggle('hidden', purposeSelect.value !== 'other');
     });
   </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const purposeSelect = document.getElementById('loanPurpose');
+    const subCatSection = document.getElementById('subCategorySection');
+    const subCatSelect = document.getElementById('loanSubcategory');
+          
+    const subCategoryData = {
+      equipment: ["Purchase of Business Equipment", "Office or Studio Equipment", "Tools & Machinery", "Technology & Software", "Other"],
+      supplies: ["Raw Materials & Consumables", "Packaging & Shipping Materials", "Inventory & Product Stock", "Safety & Protective Supplies", "Other"],
+      marketing: ["Advertising & Digital Marketing", "Branding & Design Services", "Event Promotion & Participation", "Printed Marketing Materials", "Other"],
+      space: ["Rent or Lease Payments", "Renovations & Improvements", "Utilities & Facility Maintenance", "Temporary or Pop-Up Spaces", "Storage & Warehousing", "Other"],
+      production: ["Production & Manufacturing", "Event or Exhibition Expenses", "Contracted Services & Labor", "Distribution & Delivery", "Other"],
+      development: ["Training & Workshops", "Certifications & Licensing", "Conferences & Networking", "Portfolio & Presentation Development", "Other"]
+    };
+      
+    function updateFields() {
+      const selected = purposeSelect.value;
+        // Show subcategory only if valid main category
+        if (subCategoryData[selected]) {
+          subCatSection.classList.remove("hidden");
+          subCatSelect.innerHTML = subCategoryData[selected]
+            .map(sub => `<option value="${sub}">${sub}</option>`)
+            .join('');
+        } else {
+          subCatSection.classList.add("hidden");
+          subCatSelect.innerHTML = '';
+        }
+      }
+    }
 
+    purposeSelect.addEventListener('change', updateFields);
+    updateFields(); // run once on load
+  });
+</script>
 </body>
 </html>
