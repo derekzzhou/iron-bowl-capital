@@ -176,17 +176,24 @@
 <body>
   <div class="container">
     <!-- Hero Section -->
-    <section class="hero">
-      <a href="index.html" class="flex items-center">
-        <img src="assets/logo_name.png" alt="Iron Bowl Capital" class="h-8 w-8 mr-2">
-      </a>
-      <div class="hero-text">
-        <h1 class="hero-title">Microloans for Asian American Creators</h1>
-        <p class="hero-desc">
+    <section class="hero flex flex-col md:flex-row items-center justify-between gap-6 px-6 py-12 bg-white">
+      <!-- Logo + Text -->
+      <div class="flex-1 flex flex-col items-start">
+        <a href="index.html" class="flex items-center mb-6">
+          <img src="assets/logo_name.png" alt="Iron Bowl Capital" class="h-10 w-auto max-w-xs">
+        </a>
+        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-4">
+          Microloans for Asian American Creators
+        </h1>
+        <p class="text-lg text-gray-700 max-w-md">
           Empowering Asian American creators with tailored microloans to fuel their artistic and entrepreneurial visions.
         </p>
       </div>
-      <img src="assets/chef.jpg" alt="Asian American Chef" class="hero-img">
+    
+      <!-- Hero Image -->
+      <div class="flex-1">
+        <img src="assets/chef.jpg" alt="Asian American Chef" class="w-full rounded-lg shadow-lg object-cover max-h-[400px]">
+      </div>
     </section>
     <section id="content">
         <h1>Fuel Your Creative Vision</h1>
@@ -246,20 +253,20 @@
                   </select>
                 </div>
           
-                <!-- If 'Other', show custom input -->
+                <!-- Other (only if selected) -->
                 <div id="otherPurposeInput" class="hidden">
                   <label class="block text-sm font-medium mb-1">Please describe other purpose</label>
                   <input type="text" name="loan_purpose_other" class="w-full p-2 border rounded" />
                 </div>
           
-                <!-- Subcategories (shown only when main category selected) -->
+                <!-- Subcategories -->
                 <div id="subCategorySection" class="hidden">
                   <label class="block text-sm font-medium mb-1">More specifically, it's for:</label>
                   <select name="loan_subcategory" class="w-full p-2 border rounded" id="loanSubcategory">
-                    <!-- Options injected by JavaScript -->
+                    <!-- Options added via JS -->
                   </select>
                 </div>
-          
+                
                 <!-- Work Description -->
                 <div>
                   <label class="block text-sm font-medium mb-1">Describe Your Work</label>
@@ -333,37 +340,48 @@
     updateResults();
   </script>
   <script>
-  const subCategoryData = {
-    equipment: ["Purchase of Business Equipment", "Office or Studio Equipment", "Tools & Machinery", "Technology & Software", "Other"],
-    supplies: ["Raw Materials & Consumables", "Packaging & Shipping Materials", "Inventory & Product Stock", "Safety & Protective Supplies", "Other"],
-    marketing: ["Advertising & Digital Marketing", "Branding & Design Services", "Event Promotion & Participation", "Printed Marketing Materials", "Other"],
-    space: ["Rent or Lease Payments", "Renovations & Improvements", "Utilities & Facility Maintenance", "Temporary or Pop-Up Spaces", "Storage & Warehousing", "Other"],
-    production: ["Production & Manufacturing", "Event or Exhibition Expenses", "Contracted Services & Labor", "Distribution & Delivery", "Other"],
-    development: ["Training & Workshops", "Certifications & Licensing", "Conferences & Networking", "Portfolio & Presentation Development", "Other"]
-  };
-
-  function handlePurposeChange() {
+    document.addEventListener("DOMContentLoaded", function () {
     const purposeSelect = document.getElementById('loanPurpose');
-    const selectedValue = purposeSelect.value;
-
     const otherInput = document.getElementById('otherPurposeInput');
     const subCatSection = document.getElementById('subCategorySection');
     const subCatSelect = document.getElementById('loanSubcategory');
+          
+    const subCategoryData = {
+      equipment: ["Purchase of Business Equipment", "Office or Studio Equipment", "Tools & Machinery", "Technology & Software", "Other"],
+      supplies: ["Raw Materials & Consumables", "Packaging & Shipping Materials", "Inventory & Product Stock", "Safety & Protective Supplies", "Other"],
+      marketing: ["Advertising & Digital Marketing", "Branding & Design Services", "Event Promotion & Participation", "Printed Marketing Materials", "Other"],
+      space: ["Rent or Lease Payments", "Renovations & Improvements", "Utilities & Facility Maintenance", "Temporary or Pop-Up Spaces", "Storage & Warehousing", "Other"],
+      production: ["Production & Manufacturing", "Event or Exhibition Expenses", "Contracted Services & Labor", "Distribution & Delivery", "Other"],
+      development: ["Training & Workshops", "Certifications & Licensing", "Conferences & Networking", "Portfolio & Presentation Development", "Other"]
+    };
+      
+    function updateFields() {
+      const selected = purposeSelect.value;
 
-    // Toggle 'Other' input
-    otherInput.classList.toggle('hidden', selectedValue !== 'other');
+      // Show "Other" input if "other" selected
+      if (selected === "other") {
+        otherInput.classList.remove("hidden");
+        subCatSection.classList.add("hidden");
+        subCatSelect.innerHTML = '';
+      } else {
+        otherInput.classList.add("hidden");
 
-    // Toggle and populate subcategories
-    if (subCategoryData[selectedValue]) {
-      subCatSection.classList.remove('hidden');
-      subCatSelect.innerHTML = subCategoryData[selectedValue]
-        .map(sub => `<option value="${sub}">${sub}</option>`)
-        .join('');
-    } else {
-      subCatSection.classList.add('hidden');
-      subCatSelect.innerHTML = '';
+        // Show subcategory only if valid main category
+        if (subCategoryData[selected]) {
+          subCatSection.classList.remove("hidden");
+          subCatSelect.innerHTML = subCategoryData[selected]
+            .map(sub => `<option value="${sub}">${sub}</option>`)
+            .join('');
+        } else {
+          subCatSection.classList.add("hidden");
+          subCatSelect.innerHTML = '';
+        }
+      }
     }
-  }
+
+    purposeSelect.addEventListener('change', updateFields);
+    updateFields(); // run once on load
+  });
 </script>
 </body>
 </html>
